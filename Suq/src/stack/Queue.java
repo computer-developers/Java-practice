@@ -7,18 +7,22 @@ class Queue{
      Queue(int x){
           a=new int[x];
      }
-     boolean insert(int x){
+     synchronized boolean insert(int x){
           if(r>=a.length-1)
                return false;
-          a[++r]=x;
-          if(r==0)
-               f=0;
+          synchronized(this){
+               a[++r]=x;
+               if(r==0)
+                    f=0;
+          }
           return true;
      }
-     int delete(){
+     synchronized int delete(){
           if(f>r)
                throw new ArithmeticException();
-          return a[f++];
+          synchronized(this){
+               return a[f++];
+          }
      }
      public String toString(){
           String x=new String();
