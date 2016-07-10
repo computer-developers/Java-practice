@@ -20,7 +20,7 @@ public class Suq {
                case 2:try{
                          System.out.println(s.pop()+" has been deleted.");
                     }catch(ArithmeticException e){
-                         System.out.println("element can not be deleted from Stack"+e);
+                         System.out.println("element can not be deleted from Stack");
                     }break;
                case 3:System.out.println(s);break;
                case 0:return;

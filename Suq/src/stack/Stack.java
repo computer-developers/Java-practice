@@ -9,8 +9,11 @@ public class Stack{
           q1=new Queue();
      }
      public boolean push(int x){
+          boolean f;
           t++;
-          return q1.insert(x);
+          if(!(f=q1.insert(x)))
+               t--;
+          return f;
      }
      public String toString(){
           return q1.toString();
@@ -23,7 +26,8 @@ public class Stack{
                q2.insert(q1.delete());
           int x=q1.delete();
           t--;
-          q1=(Queue)q2.clone();
+          q1=q2;
+          q2=null;
           return x;
      }
 }

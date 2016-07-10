@@ -29,7 +29,4 @@ class Queue{
      int length(){
           return a.length;
      }
-     protected Object clone(){
-          return this;
-     }
 }
