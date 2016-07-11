@@ -8,9 +8,9 @@ class Queue{
           a=new int[x];
      }
      synchronized boolean insert(int x){
-          if(r>=a.length-1)
-               return false;
           synchronized(this){
+               if(r>=a.length-1)
+                    return false;
                a[++r]=x;
                if(r==0)
                     f=0;
