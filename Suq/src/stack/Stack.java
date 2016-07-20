@@ -1,5 +1,6 @@
 package stack;
-public class Stack{
+import interfaces.IntStack;
+public class Stack implements IntStack{
      private int t=-1;
      private Queue q1,q2;
      public Stack(int x){
@@ -8,7 +9,7 @@ public class Stack{
      public Stack(){
           q1=new Queue();
      }
-     synchronized public boolean push(int x){
+     final synchronized public boolean push(int x){
           boolean f;
           synchronized(q1){
                t++;
@@ -20,7 +21,7 @@ public class Stack{
      public String toString(){
           return q1.toString();
      }
-     public int pop(){
+     final public int pop(){
           int x;
           synchronized(q1){
                if(t==-1)

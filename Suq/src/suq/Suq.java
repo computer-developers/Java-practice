@@ -3,7 +3,7 @@ import java.util.Scanner;
 import stack.Stack;
 public class Suq {
      static Scanner a=new Scanner(System.in);
-     public static void main(String[] args) {
+     public static void main(String[] args){
           Stack s;
           int x;
           System.out.println("Enter size of stack...");

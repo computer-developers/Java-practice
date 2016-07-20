@@ -1,5 +1,6 @@
 package stack;
-class Queue{
+import interfaces.IntQueue;
+class Queue implements IntQueue{
      private int a[],f=-1,r=-1;
      Queue(){
           a=new int[5];
@@ -7,7 +8,7 @@ class Queue{
      Queue(int x){
           a=new int[x];
      }
-     synchronized boolean insert(int x){
+     final synchronized public boolean insert(int x){
           synchronized(this){
                if(r>=a.length-1)
                     return false;
@@ -17,7 +18,7 @@ class Queue{
           }
           return true;
      }
-     synchronized int delete(){
+     final synchronized public int delete(){
           if(f>r)
                throw new ArithmeticException();
           synchronized(this){
