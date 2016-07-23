@@ -1,6 +1,6 @@
 package suq;
 import java.util.Scanner;
-import stack.Stack;
+import ds.Stack;
 public class Suq {
      static Scanner a=new Scanner(System.in);
      public static void main(String[] args){
@@ -26,6 +26,10 @@ public class Suq {
                case 0:return;
                default : System.out.println("invalid choice!!");
           }
+     }
+     Suq(){
+         String a[]={""};
+         Suq.main(a);
      }
      static int menu(){
           System.out.println("Menu..");

@@ -1,4 +1,4 @@
-package stack;
+package ds;
 import interfaces.IntStack;
 public class Stack implements IntStack{
      private int t=-1;

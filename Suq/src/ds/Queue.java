@@ -1,7 +1,7 @@
-package stack;
+package ds;
 import interfaces.IntQueue;
-class Queue implements IntQueue{
-     private int a[],f=-1,r=-1;
+public class Queue implements IntQueue{
+     protected int a[],f=-1,r=-1;
      Queue(){
           a=new int[5];
      }
@@ -11,7 +11,14 @@ class Queue implements IntQueue{
      final synchronized public boolean insert(int x){
           synchronized(this){
                if(r>=a.length-1)
-                    return false;
+                    if(f==0)
+                         return false;
+                    else
+                    {
+                         for(int i=0;i<=(r-f);i++)a[i]=a[i+f];
+                         r=r-f;
+                         f=0;
+                    }
                a[++r]=x;
                if(r==0)
                     f=0;
@@ -19,7 +26,7 @@ class Queue implements IntQueue{
           return true;
      }
      final synchronized public int delete(){
-          if(f>r)
+          if(f>r||f==-1)
                throw new ArithmeticException();
           synchronized(this){
                return a[f++];
