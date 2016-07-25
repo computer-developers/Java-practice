@@ -1,6 +1,6 @@
 package ds;
 import interfaces.IntQueue;
-public class Queue implements IntQueue{
+class Queue implements IntQueue{
      protected int a[],f=-1,r=-1;
      Queue(){
           a=new int[5];
@@ -11,14 +11,7 @@ public class Queue implements IntQueue{
      final synchronized public boolean insert(int x){
           synchronized(this){
                if(r>=a.length-1)
-                    if(f==0)
-                         return false;
-                    else
-                    {
-                         for(int i=0;i<=(r-f);i++)a[i]=a[i+f];
-                         r=r-f;
-                         f=0;
-                    }
+                    return false;
                a[++r]=x;
                if(r==0)
                     f=0;

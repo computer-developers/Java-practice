@@ -1,7 +1,8 @@
 package suq;
 import java.util.Scanner;
+import java.lang.Runnable;
 import ds.Stack;
-public class Suq {
+public class Suq implements Runnable{
      static Scanner a=new Scanner(System.in);
      public static void main(String[] args){
           Stack s;
@@ -31,6 +32,7 @@ public class Suq {
          String a[]={""};
          Suq.main(a);
      }
+     
      static int menu(){
           System.out.println("Menu..");
           System.out.println("1.push");
@@ -38,5 +40,9 @@ public class Suq {
           System.out.println("3.display");
           System.out.println("0.exit");
           return a.nextInt();
+     }
+     @Override
+     public void run() {
+          Suq x=new Suq();
      }
 }

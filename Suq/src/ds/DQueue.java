@@ -1,6 +1,6 @@
 package ds;
 import interfaces.*;
-public class DQueue extends Queue implements IntDQueue{
+public class DQueue extends CQueue implements IntDQueue{
      public int deleter(){
           if(f>r||f==-1)
                throw new ArithmeticException();

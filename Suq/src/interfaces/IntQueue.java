@@ -1,5 +1,5 @@
 package interfaces;
-public interface IntQueue{
+public interface IntQueue extends IntDataStructure{
      boolean insert(int x);
      int delete();
 }
