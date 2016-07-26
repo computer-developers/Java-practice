@@ -19,7 +19,8 @@ public class GameData{
           return Arrays.toString(board[0])+Arrays.toString(board[1])+Arrays.toString(board[2]);
      }
      public int upDate(int p,eboard s){
-          board[p/3][p%3]=s;
+          if(board[getrow(p)][getcol(p)]!=eboard._N)return 0;
+          board[getrow(p)][getcol(p)]=s;
           System.out.println(toString()+check());
           System.out.println(display());
           return 1;

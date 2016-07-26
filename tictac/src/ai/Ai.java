@@ -15,14 +15,16 @@ public class Ai{
           this.e=e;
      }
      public void move(){
-          for(int i=0;i<9;i++){
-               if(s.getstatus(GameData.getrow(i),GameData.getcol(i),e)==2)
+          for(int i=0;i<9;i++)
+               if(s.getstatus(GameData.getrow(i),GameData.getcol(i),e)==2){
                     board.upDate(i,e);
-          }
-          for(int i=0;i<9;i++){
-               if(s.getstatus(GameData.getrow(i),GameData.getcol(i),eboard._X)==2)
+                    break;
+               }
+          for(int i=0;i<9;i++)
+               if(s.getstatus(GameData.getrow(i),GameData.getcol(i),eboard._X)==2){
                     board.upDate(i,e);
-          }
+                    break;
+               }
           for(int i=r.nextInt(8);true;i=r.nextInt(8)){
                if(s.getstatus(GameData.getrow(i),GameData.getcol(i), e)!=-1){
                     board.upDate(i, e);
