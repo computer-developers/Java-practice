@@ -1,15 +1,20 @@
 package tictac;
 import game.*;
+import ai.*;
+import java.util.Random;
 public class Tictac {
      public static void main(String[] args) {
           GameData g=new GameData();
-          g.upDate(1, eboard._O);
-          g.upDate(0, eboard._O);
-          g.upDate(6, eboard._N);
-          g.upDate(8, eboard._N);
-          g.upDate(2, eboard._O);
-          g.upDate(8, eboard._X);
-          
+          Ai a=new Ai(g,eboard._O);
+          Random r=new Random();
+          g.upDate(r.nextInt(8), eboard._X);
+          a.move();
+          g.display();
+          g.upDate(r.nextInt(8), eboard._X);
+          a.move();
+          g.display();
+          g.upDate(r.nextInt(8), eboard._X); 
+          a.move();
+          g.display();
      }
-     
 }
