@@ -1,6 +1,9 @@
 package game;
 import java.util.Arrays;
+import player.*;
 public class GameData{
+     private eboard board[][]=new eboard[3][3];
+     private Player p1,p2; 
      public static int getind(int a,int b){
           return a*3+b;
      }
@@ -10,20 +13,33 @@ public class GameData{
      public static int getcol(int a){
           return a%3;
      }
-     private eboard board[][]=new eboard[3][3];
      public GameData(){
           for(int i=0;i<3;i++)
           Arrays.fill(board[i],eboard._N);
      }
+     public boolean setplayer(Player p){
+          if(p1==null){
+               p1=p;
+               return true;
+          }else if(p2==null){
+               p2=p;
+               return true;
+          }
+          return false;
+     }
      public String toString(){
           return Arrays.toString(board[0])+Arrays.toString(board[1])+Arrays.toString(board[2]);
      }
-     public int upDate(int p,eboard s){
-          if(board[getrow(p)][getcol(p)]!=eboard._N)return 0;
+     public boolean upDate(int p,eboard s){
+          if(board[getrow(p)][getcol(p)]!=eboard._N)return false;
           board[getrow(p)][getcol(p)]=s;
+          try{
+               p1.upDate(p,s);
+               p2.upDate(p,s);
+          }catch(Exception e){}
           System.out.println(toString()+check());
           System.out.println(display());
-          return 1;
+          return true;
      }
      public String display(){
           String s=new String();
