@@ -18,13 +18,13 @@ class Status{
                if(x.containsKey(p))
                     x.replace(p,x.get(p)+h);
                else
-                    x.put(p,1);
+                    x.put(p,h);
           }
           else if(e.c=='O'){
                if(o.containsKey(p))
                     o.replace(p,o.get(p)+h);
                else
-                    o.put(p,1);
+                    o.put(p,h);
           }
           else{
                x.remove(p);

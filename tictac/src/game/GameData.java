@@ -37,18 +37,20 @@ public class GameData{
                p1.upDate(p,s);
                p2.upDate(p,s);
           }catch(Exception e){}
-          System.out.println(toString()+check());
-          System.out.println(display());
+          //System.out.println(toString()+check());
+          //System.out.println(display());
           return true;
      }
      public String display(){
           String s=new String();
-          for(eboard e[]:board)
+          for(eboard e[]:board){
                for(eboard d:e)
                     s=s.concat(Character.toString(d.c));
+               s=s.concat("\n");
+          }     
           return s;
      }
-     eboard check(){
+     public eboard check(){
           for(int i=0;i<3;i++)r:{
                if(board[i][0].c=='N')
                     break r;
