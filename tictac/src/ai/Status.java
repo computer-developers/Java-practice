@@ -2,7 +2,7 @@ package ai;
 import game.*;
 import java.util.Hashtable;
 import java.util.ArrayList;
-class Status{
+class Status implements Cloneable{
      final static int r=1000,c=100,d=10,rd=1;
      Hashtable<Integer,Integer>x,o;
      ArrayList<Integer>u;
@@ -71,5 +71,26 @@ class Status{
                     return 0;
           }
           return -2;
+     }
+     public boolean contain(eboard e,int i){
+          if(e.c=='X')
+               return x.containsKey(i);
+          else if(e.c=='O')
+               return o.containsKey(i);
+          else
+               return !u.contains(i);
+     }
+     protected Object clones(){
+          Status f=new Status();
+          try{
+               f.x.putAll(this.x);
+               f.o.putAll(this.o);
+               f.u.addAll(this.u);
+               /*for(int j=0;j<9;j++){
+                    System.out.println(f.o.get(j)+" "+f.x.get(j));
+               }
+               System.out.println("t");*/
+          }catch(Exception e){System.out.println("clone error");}
+          return f;
      }
 }

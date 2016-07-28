@@ -31,7 +31,8 @@ public class GameData{
           return Arrays.toString(board[0])+Arrays.toString(board[1])+Arrays.toString(board[2]);
      }
      public boolean upDate(int p,eboard s){
-          if(board[getrow(p)][getcol(p)]!=eboard._N)return false;
+          if(board[getrow(p)][getcol(p)]!=eboard._N)
+               return false;
           board[getrow(p)][getcol(p)]=s;
           try{
                p1.upDate(p,s);
@@ -67,7 +68,7 @@ public class GameData{
                          break c;
                return board[0][j];
           }
-          if(board[1][1].c=='N'){
+          if(board[1][1].c!='N'){
                d:{
                     for(int i=0;i<3;i++)
                          if(board[i][i].c!=board[1][1].c)
@@ -83,4 +84,11 @@ public class GameData{
           }
           return eboard._N;
      }
+     /*public Object clone(){
+          try{
+               GameData h=(GameData)super.clone();
+               return h; 
+          }catch(CloneNotSupportedException e){System.out.println("error in cloning!!!");}
+          return this;
+     }*/ 
 }

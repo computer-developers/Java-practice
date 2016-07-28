@@ -7,4 +7,11 @@ public enum eboard{
           v=a;
           c=b;
      }
+     public eboard oppo(){
+          if(this==_X)
+               return _O;
+          else if(this==_O)
+               return _X;
+          return this;
+     }
 }

@@ -1,7 +1,7 @@
 package ai;
 import game.*;
 import player.*;
-import java.util.Random;
+import java.util.*;
 public class Ai extends Player{
      Random r=new Random();
      Status s=new Status();
@@ -14,19 +14,32 @@ public class Ai extends Player{
      public void move(){
           for(int i=0;i<9;i++)
                if(s.getstatus(GameData.getrow(i),GameData.getcol(i),e)>1){
-                    System.out.println("move 1 "+i+" "+s.o.get(i));
+                    //System.out.println("move 1 "+i+" "+s.o.get(i));
                     if(move(i))
                          return;
                }
           for(int i=0;i<9;i++)
-               if(s.getstatus(GameData.getrow(i),GameData.getcol(i),eboard._X)>1){
-                    System.out.println("move 2 "+i+" "+s.x.get(i));
+               if(s.getstatus(GameData.getrow(i),GameData.getcol(i),e.oppo())>1){
+                    //System.out.println("move 2 "+i+" "+s.x.get(i));
                     if(move(i))
+                         return;
+               }
+               Analysis an=new Analysis();
+               ArrayList arr=an.mindiff(s,super.e);
+               System.out.println(arr.size());
+               int b=arr.size()-1;
+               if(b==0)
+                    if(move((int)arr.get(b)))
+                         return;
+               if(b>0){
+                    b=r.nextInt(b);
+                    //System.out.println("svvsvvsvsvsvsvsv "+b);
+                    if(move((int)arr.get(b)))
                          return;
                }
           for(int i=r.nextInt(8);true;i=r.nextInt(8)){
                if(s.getstatus(GameData.getrow(i),GameData.getcol(i), e)!=-1){
-                    System.out.println("move 3 "+i+" "+s.x.get(i)+" "+s.o.get(i));
+                    //System.out.println("move 3 "+i+" "+s.x.get(i)+" "+s.o.get(i));
                     if(move(i))
                          return;
                }
