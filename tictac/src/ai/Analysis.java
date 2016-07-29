@@ -6,7 +6,7 @@ public class Analysis {
      int getdiff(int i,Status s,eboard e){
           int c=0;
                Status z=(Status)s.clones();
-               boolean b=z.contain(eboard._N, i);
+               //boolean b=z.contain(eboard._N, i);
                if(z.contain(eboard._N,i)){
                     z.set(GameData.getrow(i),GameData.getcol(i),e);
                     /*for(int j=0;j<9;j++){                        
@@ -39,4 +39,33 @@ public class Analysis {
 //          System.out.println("mind "+arr.get(0));
           return arr;
      }
+     public ArrayList nextStep(Status s,eboard e){
+          ArrayList arr=new ArrayList();
+          for(int i=0;i<9;i++)
+               if(s.contain(eboard._N,i))
+                    arr.add(i);
+          System.out.println("arr.size = "+arr.size());
+          arr=checktwo(arr,s,e);
+          for(Object arr1 : arr)System.out.println(arr1 + " ");
+          return arr;
+     }
+     ArrayList checktwo(ArrayList arr,Status s,eboard e){
+          ArrayList rem=new ArrayList();
+          for(int i=0;i<arr.size();i++){
+               int f=(int)arr.get(i);
+               Status z=(Status)s.clones();
+               if(z.contain(eboard._N,i)){
+                    z.set(GameData.getrow(i),GameData.getcol(i),e);
+                    for(int j=0;j<9;j++)
+                         if(z.getstatus(GameData.getrow(i),GameData.getcol(i),e)>1){
+                              System.out.println("ingctxxm");
+                              if(z.movenum(i,e.oppo())>1)
+                                   rem.add(i);
+                         }
+               }
+          }
+          System.out.println(arr.removeAll(rem));
+          return arr;
+     }
+     
 }

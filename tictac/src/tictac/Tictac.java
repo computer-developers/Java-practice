@@ -20,6 +20,7 @@ public class Tictac {
                System.out.println(g.display());
                b=!b;
           }
-          }catch(Exception e){System.out.println("fsfksfk");}
+          }catch(InvalidSymbolException e){System.out.println("fsfksfk");}
+          //catch(Exception e1){System.out.println("knnmkjjii");}
      }
 }

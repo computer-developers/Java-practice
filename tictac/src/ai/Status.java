@@ -93,4 +93,26 @@ class Status implements Cloneable{
           }catch(Exception e){System.out.println("clone error");}
           return f;
      }
+     int movenum(int i,eboard e){
+          int p,j;
+          if(e.c=='X'){
+               if(x.containsKey(i)){
+                    p=x.get(i);
+                    for(j=0;p>0;j++)p/=10;
+                    return j;
+               }
+               else
+                    return 0;
+          }
+          else if(e.c=='O'){
+               if(o.containsKey(i)){
+                    p=o.get(i);
+                         for(j=0;p>0;j++)p/=10;
+                    return j;
+               }
+               else
+                    return 0;
+          }
+          return -1;
+     }
 }
