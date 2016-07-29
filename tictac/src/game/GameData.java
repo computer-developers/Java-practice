@@ -82,7 +82,10 @@ public class GameData{
                     return board[1][1];
                }
           }
-          return eboard._N;
+          for(int i=0;i<9;i++)
+               if(board[GameData.getrow(i)][GameData.getcol(i)]==eboard._N)
+                    return eboard._N;
+          throw new ArrayIndexOutOfBoundsException();
      }
      /*public Object clone(){
           try{
