@@ -98,7 +98,8 @@ class Status implements Cloneable{
           if(e.c=='X'){
                if(x.containsKey(i)){
                     p=x.get(i);
-                    for(j=0;p>0;j++)p/=10;
+                    for(j=0;p>0;p/=10)
+                         if(p%10!=0)j++;
                     return j;
                }
                else
@@ -107,12 +108,19 @@ class Status implements Cloneable{
           else if(e.c=='O'){
                if(o.containsKey(i)){
                     p=o.get(i);
-                         for(j=0;p>0;j++)p/=10;
+                    for(j=0;p>0;p/=10)
+                         if(p%10!=0)j++;
                     return j;
                }
                else
                     return 0;
           }
           return -1;
+     }
+     ArrayList getavail(){
+          ArrayList a=new ArrayList();
+          for(int b=0;b<9;b++)a.add(b);
+          a.removeAll(u);
+          return a;
      }
 }
