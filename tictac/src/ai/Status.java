@@ -86,10 +86,6 @@ class Status implements Cloneable{
                f.x.putAll(this.x);
                f.o.putAll(this.o);
                f.u.addAll(this.u);
-               /*for(int j=0;j<9;j++){
-                    System.out.println(f.o.get(j)+" "+f.x.get(j));
-               }
-               System.out.println("t");*/
           }catch(Exception e){System.out.println("clone error");}
           return f;
      }

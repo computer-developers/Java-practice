@@ -38,8 +38,6 @@ public class GameData{
                p1.upDate(p,s);
                p2.upDate(p,s);
           }catch(Exception e){}
-          //System.out.println(toString()+check());
-          //System.out.println(display());
           return true;
      }
      public String display(){
@@ -86,12 +84,5 @@ public class GameData{
                if(board[GameData.getrow(i)][GameData.getcol(i)]==eboard._N)
                     return eboard._N;
           throw new ArrayIndexOutOfBoundsException();
-     }
-     /*public Object clone(){
-          try{
-               GameData h=(GameData)super.clone();
-               return h; 
-          }catch(CloneNotSupportedException e){System.out.println("error in cloning!!!");}
-          return this;
-     }*/ 
+     } 
 }
