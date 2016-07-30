@@ -8,9 +8,13 @@ public class Ai extends Player{
      public Ai(GameData board,eboard e) throws InvalidSymbolException{
           super("Artificial Intelligence",board,e);
      }
+     public Ai(String name,GameData board,eboard e) throws InvalidSymbolException{
+          super(name,board,e);
+     }
      public Ai(eboard e) throws InvalidSymbolException{
           super("Artificial Intelligence",new GameData(),e);
      }
+     
      public void move(){
           ArrayList arr;
           arr=s.getavail();
