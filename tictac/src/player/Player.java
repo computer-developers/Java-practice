@@ -34,4 +34,7 @@ public class Player{
           return board.upDate(x,e);
      }
      public void upDate(int x,eboard e){}
+     public String toString(){
+          return name;
+     }
 }

@@ -3,7 +3,7 @@ import java.util.Arrays;
 import player.*;
 public class GameData{
      private eboard board[][]=new eboard[3][3];
-     private Player p1,p2; 
+     private Player po,px; 
      public static int getind(int a,int b){
           return a*3+b;
      }
@@ -18,11 +18,11 @@ public class GameData{
           Arrays.fill(board[i],eboard._N);
      }
      public boolean setplayer(Player p){
-          if(p1==null){
-               p1=p;
+          if(p.e==eboard._O){
+               po=p;
                return true;
-          }else if(p2==null){
-               p2=p;
+          }else if(p.e==eboard._X){
+               px=p;
                return true;
           }
           return false;
@@ -35,8 +35,8 @@ public class GameData{
                return false;
           board[getrow(p)][getcol(p)]=s;
           try{
-               p1.upDate(p,s);
-               p2.upDate(p,s);
+               po.upDate(p,s);
+               px.upDate(p,s);
           }catch(Exception e){}
           return true;
      }
@@ -84,5 +84,13 @@ public class GameData{
                if(board[GameData.getrow(i)][GameData.getcol(i)]==eboard._N)
                     return eboard._N;
           throw new ArrayIndexOutOfBoundsException();
-     } 
+     }
+     public Player getplayer(eboard e)throws InvalidSymbolException{
+          if(e==eboard._O)
+               return po;
+          else if(e==eboard._X)
+               return px;
+          else
+               throw new InvalidSymbolException();
+     }
 }
