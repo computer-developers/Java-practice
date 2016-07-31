@@ -1,11 +1,15 @@
-package tictac;
 import game.*;
 import ai.*;
 import player.*;
+import gui.*;
 import java.util.Random;
 import java.util.Scanner;
 public class Tictac {
      public static void main(String[] args) {
+          //test();
+          Gui g=new Gui();
+     }
+     public static void test(){
           try{
           boolean b=true;
           Scanner sc=new Scanner(System.in);
@@ -22,7 +26,7 @@ public class Tictac {
                }System.out.println(g.display());
                b=!b;
           }
-               System.out.println(g.getplayer(g.check())+" win..");
+          System.out.println(g.getplayer(g.check())+" win..");
           }catch(InvalidSymbolException e){System.out.println("fsfksfk");}
           catch(Exception e1){System.out.println("complete");}
      }
