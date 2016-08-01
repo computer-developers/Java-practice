@@ -27,7 +27,7 @@ public class Tictac {
                b=!b;
           }
           System.out.println(g.getplayer(g.check())+" win..");
-          }catch(InvalidSymbolException e){System.out.println("fsfksfk");}
-          catch(Exception e1){System.out.println("complete");}
+          }catch(NoMoveException e){System.out.println(e);}
+          catch(Exception e1){System.out.println("error");}
      }
 }

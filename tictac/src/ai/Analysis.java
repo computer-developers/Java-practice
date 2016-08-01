@@ -57,4 +57,20 @@ public class Analysis {
           arr.removeAll(rem);
           return arr;
      }
+     ArrayList checkone(ArrayList arr,Status s,eboard e){
+          ArrayList rem=new ArrayList();
+          for(int i=0;i<arr.size();i++){
+               int f=(int)arr.get(i);
+               Status z=(Status)s.clones();
+               if(z.contain(eboard._N,f)){
+                    z.set(GameData.getrow(f),GameData.getcol(f),e);
+                    for(int j=0;j<9;j++)
+                         if(z.getstatus(GameData.getrow(j),GameData.getcol(j),e)>1)
+                              rem.add(f);
+               }
+          }
+          if(!rem.isEmpty())
+               arr.retainAll(rem);
+          return arr;
+     }
 }

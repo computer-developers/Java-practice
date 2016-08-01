@@ -49,6 +49,12 @@ public class Ai extends Player{
                ArrayList ar=an.nextStep(s,super.e);
                arr.retainAll(ar);
           }
+          L4:{
+               Analysis an=new Analysis();
+               ArrayList ar=an.checkone(arr, s, e);
+               arr.retainAll(ar);
+          }
+          for(Object o:arr)System.out.println(" \\ "+o);
           if(arr.size()==1)
                if(move((int)arr.get(0)))
                     return;
