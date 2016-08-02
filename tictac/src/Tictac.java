@@ -28,6 +28,5 @@ public class Tictac {
           }
           System.out.println(g.getplayer(g.check())+" win..");
           }catch(NoMoveException e){System.out.println(e);}
-          catch(Exception e1){System.out.println("error");}
      }
 }

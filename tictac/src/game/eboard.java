@@ -1,6 +1,6 @@
 package game;
 public enum eboard{
-     _X(1,'X'),_O(0,'O'),_N(-1,'N');
+     _N(-1,'N'),_O(0,'O'),_X(1,'X');
      public final int v;
      public final char c;
      eboard(int a,char b){
@@ -13,5 +13,9 @@ public enum eboard{
           else if(this==_O)
                return _X;
           return this;
+     }
+     public static eboard[] getAll(){
+          eboard[] e={_O,_X};
+          return e;
      }
 }

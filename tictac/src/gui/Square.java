@@ -9,7 +9,7 @@ class Square extends JButton{
           xw=new ImageIcon("src\\crossw.png"),
           ow=new ImageIcon("src\\circlew.png"),
           n=new ImageIcon("src\\null.png");
-     Square(SingleEvents e,int index){
+     Square(MultiEvents e,int index){
           super.setSize(150,150);
           setVisible(true);
           setIcon(n);

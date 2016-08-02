@@ -15,24 +15,24 @@ public class Ai extends Player{
           super("Artificial Intelligence",new GameData(),e);
      }
      
-     public void move(){
+     public int move(){
           ArrayList arr;
           arr=s.getavail();
           if(arr.size()==1)
                if(move((int)arr.get(0)))
-                    return;
+                    return (int)arr.get(0);
           L1:{
                for(int i=0;i<arr.size();i++){
                     int k=(int)arr.get(i);
                     if(s.getstatus(GameData.getrow(k),GameData.getcol(k),e)>1){
                          if(move(k))
-                              return;
+                              return k;
                     }}
                for(int i=0;i<arr.size();i++){
                     int k=(int)arr.get(i);
                     if(s.getstatus(GameData.getrow(k),GameData.getcol(k),e.oppo())>1){
                          if(move(k))
-                              return;
+                              return k;
                     }}
           }
           L2:{
@@ -43,7 +43,7 @@ public class Ai extends Player{
           }
           if(arr.size()==1)
                if(move((int)arr.get(0)))
-                    return;
+                    return (int)arr.get(0);
           L3:{
                Analysis an=new Analysis();
                ArrayList ar=an.nextStep(s,super.e);
@@ -54,16 +54,15 @@ public class Ai extends Player{
                ArrayList ar=an.checkone(arr, s, e);
                arr.retainAll(ar);
           }
-          for(Object o:arr)System.out.println(" \\ "+o);
           if(arr.size()==1)
                if(move((int)arr.get(0)))
-                    return;
+                    return (int)arr.get(0);
           int b=arr.size()-1;
           for(int i=r.nextInt(b);true;i=r.nextInt(b)){
                int k=(int)arr.get(i);
                if(s.getstatus(GameData.getrow(k),GameData.getcol(k), e)!=-1){
                     if(move(k))
-                         return;
+                         return k;
                }
           }  
      }

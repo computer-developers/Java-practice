@@ -1,49 +1,40 @@
 package gui;
 import ai.*;
 import game.*;
-import java.awt.event.*;
-import javax.swing.*;
-import static javax.swing.JOptionPane.*;
+import game.*;
+import java.awt.event.ActionEvent;
+import javax.swing.Icon;
 import player.*;
-public class SingleEvents implements ActionListener{
-     Square b;
-     GuiBoard bor;
-     GameData g;
-     Player px,po;
-     boolean turn=true;
+public class SingleEvents extends MultiEvents{
+     private Ai ai;
+     Icon iai;
+     private boolean turns;
+     public SingleEvents(GameData g, GuiBoard bor, Player p,eboard e){
+          super(g,new Ai(g,e.oppo()), p, bor);
+          if(e==eboard._O)
+               try{
+                    turns=false;
+                    ai=(Ai)px;
+                    bor.px=px;
+                    iai=Square.x;
+               }catch(IncompatibleClassChangeError ex){System.out.println(ex);}
+          else
+               try{
+                    turns=true;
+                    iai=Square.o;
+                    ai=(Ai)po;
+                    bor.po=po;
+               }catch(IncompatibleClassChangeError ex){System.out.println(ex);}
+          turn=turns;
+     }
      public void actionPerformed(ActionEvent e){
-          b=(Square)e.getSource();
-          if(turn){
-              if(!px.move(b.index))
-                  return;
-              b.setIcon(Square.x);
-              turn=false;
-          }
-          else{
-              if(!po.move(b.index))
-                  return;
-              b.setIcon(Square.o);
-              turn=true;
-          }
+          if(!f)return;
+          super.actionPerformed(e);
+          if(!f)return;
+          int i=ai.move();
+          bor.g[i].setIcon(iai);
+          turn=turns;
           check();
-          //System.out.println(" csscscsccscc" + e);
      }
-     void check(){
-          try{
-          if(g.check()==eboard._N)
-               return;
-          String s=g.getWin();
-          System.out.println("string s="+s);
-          bor.win(s,g.check());
-          }catch(NoMoveException e){
-               JOptionPane.showMessageDialog(bor,e.getMessage(),"",INFORMATION_MESSAGE);
-          }
-     }
-     public SingleEvents(GameData g,Player px,Player po,GuiBoard bor){
-         this.g=g;
-         this.px=px;
-         this.po=po;
-         this.bor=bor;
-     }
-          
 }
+     
