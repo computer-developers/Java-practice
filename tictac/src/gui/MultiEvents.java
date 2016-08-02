@@ -14,29 +14,34 @@ public class MultiEvents implements ActionListener{
      boolean turn=true;
      public void actionPerformed(ActionEvent e){
           if(!f)return;
-          b=(Square)e.getSource();
-          if(turn){
-              if(!px.move(b.index))
-                  return;
-              b.setIcon(Square.x);
-              turn=false;
+          try{
+               b=(Square)e.getSource();
+               if(turn){
+                   if(!px.move(b.index))
+                       return;
+                   b.setIcon(Square.x);
+                   turn=false;
+               }
+               else{
+                   if(!po.move(b.index))
+                       return;
+                   b.setIcon(Square.o);
+                   turn=true;
           }
-          else{
-              if(!po.move(b.index))
-                  return;
-              b.setIcon(Square.o);
-              turn=true;
+          }catch(NoMoveException ex){}
+          finally{
+               check();
           }
-          check();
      }
      void check(){
           try{
-          if(g.check()==eboard._N)
+          if(!f||g.check()==eboard._N)
                return;
           String s=g.getWin();
-          f=false;
           bor.win(s,g.check());
           }catch(NoMoveException e){
+               f=false;
+               System.out.println(f);
                JOptionPane.showMessageDialog(bor,e,"",INFORMATION_MESSAGE);
           }
      }

@@ -57,6 +57,8 @@ public class Ai extends Player{
           if(arr.size()==1)
                if(move((int)arr.get(0)))
                     return (int)arr.get(0);
+          if(arr.size()==0)
+               board.check();
           int b=arr.size()-1;
           for(int i=r.nextInt(b);true;i=r.nextInt(b)){
                int k=(int)arr.get(i);

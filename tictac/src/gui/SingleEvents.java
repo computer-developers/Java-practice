@@ -28,13 +28,19 @@ public class SingleEvents extends MultiEvents{
           turn=turns;
      }
      public void actionPerformed(ActionEvent e){
-          if(!f)return;
-          super.actionPerformed(e);
-          if(!f)return;
-          int i=ai.move();
-          bor.g[i].setIcon(iai);
-          turn=turns;
-          check();
+          try{
+               if(!f)return;
+               super.actionPerformed(e);
+               if(!f)return;
+               if(turn!=turns){
+                    int i=ai.move();
+                    bor.g[i].setIcon(iai);
+               }
+               turn=turns;
+          }catch(NoMoveException ex){}
+          finally{
+               check();
+          }
      }
 }
      

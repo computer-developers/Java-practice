@@ -64,6 +64,6 @@ class GuiBoard extends JFrame{
                }
                JOptionPane.showMessageDialog(this,px+" wins","Result",INFORMATION_MESSAGE);
           }
-          
+          this.e.f=false;
      }
 }
