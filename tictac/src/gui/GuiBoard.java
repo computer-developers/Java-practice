@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-class GuiBoard extends JFrame{
+class GuiBoard extends JPanel{
      GameData gd;
      Player px,po;
      MultiEvents e;
@@ -21,7 +21,7 @@ class GuiBoard extends JFrame{
                     add(g[i]);
                }
                setLayout(new GridLayout(3,3));
-               setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//               setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
           } catch(InvalidSymbolException ex) { }
      }
      GuiBoard(String px,String po){

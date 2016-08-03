@@ -1,9 +1,10 @@
 package gui;
 import game.eboard;
 import java.awt.*;
-import javax.swing.JOptionPane;
-public class Gui{
+import javax.swing.*;
+public class Gui extends JFrame{
      GuiBoard board;
+     //GuiControl gc;
      final static String s[]={"Play With Artificial Intelligence","Play with another Player"};
      public Gui(){
           int i=JOptionPane.showOptionDialog(
@@ -21,8 +22,16 @@ public class Gui{
                String po=JOptionPane.showInputDialog("Enter O's Player Name","playerO");
                board=new GuiBoard(px,po);
           }
+          add(board);
+          setVisible(true);
+          setSize(450,450);
           board.setSize(450,450);
-          board.setResizable(false);
+          setResizable(false);
           board.setVisible(true);
+          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          //gc=new GuiControl(board.px.name,board.po.name);
+          //add(gc);
+          //gc.setLocation(450,0);
+          //setLayout(new GridLayout(0,2));
      }
 }
