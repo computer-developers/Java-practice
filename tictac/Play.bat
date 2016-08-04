@@ -1,2 +1,3 @@
-start java -classpath .\build\classes Tictac
+@echo off
+start javaw -classpath .\build\classes Tictac
 exit
