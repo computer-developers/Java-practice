@@ -5,14 +5,14 @@ import java.util.ArrayList;
 class Status implements Cloneable{
      final static int r=1000,c=100,d=10,rd=1;
      Hashtable<Integer,Integer>x,o;
-     ArrayList<Integer>u;
+     Hashtable<Integer,eboard>u;
      Status(){
           x=new Hashtable<Integer,Integer>();
           o=new Hashtable<Integer,Integer>();
-          u=new ArrayList<Integer>();
+          u=new Hashtable<Integer,eboard>();
      }
      void update(int p,int h,eboard e){
-          if(u.contains(p))
+          if(u.containsKey(p))
                return;
           if(e.c=='X'){
                if(x.containsKey(p))
@@ -33,7 +33,7 @@ class Status implements Cloneable{
      }
      void set(int x,int y,eboard e){
           update(GameData.getind(x, y),10,eboard._N);
-          u.add(GameData.getind(x, y));
+          u.put(GameData.getind(x, y),e);
           for(int i=x-1;i>=0;i--)update(GameData.getind(i,y),c,e);
           for(int i=x+1;i<=2;i++)update(GameData.getind(i,y),c,e);
           for(int i=y-1;i>=0;i--)update(GameData.getind(x,i),r,e);
@@ -48,7 +48,7 @@ class Status implements Cloneable{
           }
      }
      int getstatus(int a,int b,eboard e){
-          if(u.contains(GameData.getind(a, b)))
+          if(u.containsKey(GameData.getind(a, b)))
                return -1;
           if(e.c=='X'){
                if(x.containsKey(GameData.getind(a, b))){
@@ -78,14 +78,14 @@ class Status implements Cloneable{
           else if(e.c=='O')
                return o.containsKey(i);
           else
-               return !u.contains(i);
+               return !u.containsKey(i);
      }
      protected Object clones(){
           Status f=new Status();
           try{
                f.x.putAll(this.x);
                f.o.putAll(this.o);
-               f.u.addAll(this.u);
+               f.u.putAll(this.u);
           }catch(Exception e){System.out.println("clone error");}
           return f;
      }
@@ -116,7 +116,7 @@ class Status implements Cloneable{
      ArrayList getavail(){
           ArrayList a=new ArrayList();
           for(int b=0;b<9;b++)a.add(b);
-          a.removeAll(u);
+          a.removeAll(u.keySet());
           return a;
      }
 }

@@ -3,25 +3,26 @@ import game.GameData;
 import game.eboard;
 import java.util.ArrayList;
 public class Analysis {
-     int getdiff(int i,final Status s,eboard e){
+     int getdiff(int i,final Status s,GameData gd,eboard e){
           int c=0;
                Status z=(Status)s.clones();
                if(z.contain(eboard._N,i)){
                     z.set(GameData.getrow(i),GameData.getcol(i),e);
-                    for(int j=0;j<9;j++)
-                         if(z.contain(e.oppo(),j))
+                    for(int j=0;j<9;j++)try{
+                         if(z.contain(e.oppo(),j)||s.u.get(i)!=e.oppo())
                               if(!z.contain(e,j)){
                                    c++;
                               }
+                    }catch(NullPointerException ex){}
                     return c;
                }
                return -1;
      }
-     public ArrayList mindiff(final Status s,eboard e){
+     public ArrayList mindiff(final Status s,GameData gd,eboard e){
           ArrayList arr=new ArrayList();
           int coun=9;
           for(int i=0;i<9;i++){
-               int f=getdiff(i,s,e);
+               int f=getdiff(i,s,gd,e);
                if(f!=-1&&f<coun){
                     arr.clear();
                     arr.add(i);

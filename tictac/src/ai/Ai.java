@@ -38,7 +38,7 @@ public class Ai extends Player{
           L2:{
                Analysis an=new Analysis();
                ArrayList ar;
-               ar=an.mindiff(s,super.e);
+               ar=an.mindiff(s,board,super.e);
                arr.retainAll(ar);
           }
           if(arr.size()==1)
