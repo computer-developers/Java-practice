@@ -16,8 +16,4 @@ class Square extends JButton{
           this.index=index;
           addActionListener(e);
      }
-     void changesym(eboard e){
-          
-          
-     }
 }

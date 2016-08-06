@@ -47,6 +47,7 @@ public class MultiEvents implements ActionListener{
      }
      public MultiEvents(GameData g,Player px,Player po,GuiBoard bor){
           this.g=g;
+          this.bor=bor;
           if(px.e==eboard._X&&po.e==eboard._O){
                this.px=px;
                this.po=po;
@@ -54,10 +55,11 @@ public class MultiEvents implements ActionListener{
           else if(px.e==eboard._O&&po.e==eboard._X){
                this.px=po;
                this.po=px;
+               bor.po=px;
+               bor.px=po;
           }
           else
                throw new InvalidSymbolException();
-          this.bor=bor;
      }
           
 }
