@@ -27,8 +27,8 @@ public class MultiEvents implements ActionListener{
                        return;
                    b.setIcon(Square.o);
                    turn=true;
-          }
-          }catch(NoMoveException ex){}
+               }
+          }catch(NoMoveException | NullPointerException ex){}
           finally{
                check();
           }
@@ -41,8 +41,9 @@ public class MultiEvents implements ActionListener{
           bor.win(s,g.check());
           }catch(NoMoveException e){
                f=false;
-               System.out.println(f);
+               //System.out.println(f);
                JOptionPane.showMessageDialog(bor,e,"",INFORMATION_MESSAGE);
+               bor.gui.notify(eboard._N);
           }
      }
      public MultiEvents(GameData g,Player px,Player po,GuiBoard bor){

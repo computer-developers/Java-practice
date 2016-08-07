@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Gui extends JFrame{
      GuiBoard board;
      String p,px,po;
-     eboard withai;
+     eboard withai,e=eboard._N;
      GuiControl gc;
      final static String s[]={"Play With Artificial Intelligence","Play with another Player"};
      public Gui(){
@@ -45,13 +45,15 @@ public class Gui extends JFrame{
           setTitle("Tic Tac Toe");
           //super.setIconImage(new Image("src\\circlew.png"));
           setLocation(100,50);
+          super.setResizable(false);
           setlay();
      }
      public void notify(boolean b){
           if(b){
                remove(board);
-               if(withai==eboard._N)
+               if(withai==eboard._N){
                     board=new GuiBoard(px,po,this);
+               }
                else{
                     board=new GuiBoard(p,withai.oppo(),this); 
                }
@@ -60,6 +62,11 @@ public class Gui extends JFrame{
      }
      public void notify(eboard e){
           try{
+               if(e!=eboard._N)this.e=e;
+               else if(this.e!=eboard._N)
+                    this.e=this.e.oppo();
+               else
+                    this.e=eboard._X;
                gc.notify(e);
           }catch(InvalidSymbolException ex){}
      }

@@ -13,30 +13,31 @@ public class SingleEvents extends MultiEvents{
           super(g,new Ai(g,e.oppo()), p, bor);
           if(e==eboard._O)
                try{
-                    turns=false;
+                    turns=true;
                     ai=(Ai)px;
                     bor.px=px;
                     iai=Square.x;
                }catch(IncompatibleClassChangeError ex){System.out.println(ex);}
           else
                try{
-                    turns=true;
+                    turns=false;
                     iai=Square.o;
                     ai=(Ai)po;
                     bor.po=po;
                }catch(IncompatibleClassChangeError ex){System.out.println(ex);}
-          turn=turns;
+          //turn=turns;
      }
      public void actionPerformed(ActionEvent e){
           try{
                if(!f)return;
-               super.actionPerformed(e);
+               if(turn!=turns)
+                    super.actionPerformed(e);
                if(!f)return;
-               if(turn!=turns){
+               if(turn==turns){
                     int i=ai.move();
                     bor.g[i].setIcon(iai);
+                    turn=!turn;
                }
-               turn=turns;
           }catch(NoMoveException ex){}
           finally{
                check();

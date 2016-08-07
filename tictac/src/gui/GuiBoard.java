@@ -23,6 +23,9 @@ class GuiBoard extends JPanel{
                     add(g[i]);
                }
                setLayout(new GridLayout(3,3));
+               if(gui.e==eboard._X)
+                    e.turn=false;
+               e.actionPerformed(null);
           } catch(InvalidSymbolException ex) { }
      }
      GuiBoard(String px,String po,Gui gui){
@@ -57,7 +60,7 @@ class GuiBoard extends JPanel{
                }
                JOptionPane.showMessageDialog(this,po+" wins","Result",INFORMATION_MESSAGE);
           }
-          else{
+          else if(e==eboard._X){
                for(int i=0;i<=2;i++){
                     int c=d%10;
                     g[c].setIcon(Square.xw);
