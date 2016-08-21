@@ -8,12 +8,15 @@ public class Gui extends JFrame{
      String p,px,po;
      eboard withai,e=eboard._N;
      GuiControl gc;
-     final static String s[]={"Play With Artificial Intelligence","Play with another Player"};
+     final static String s[]={"Play With Artificial Intelligence","Play with another Player"},
+               lev[]={"Easy","Medium","High"};
      public Gui(){
+          int level;
           int i=JOptionPane.showOptionDialog(
                     null,"select one of the following","Tic Tac Toe",1,1, null,s,0);
           if(i==-1)return;
           else if(i==0){
+               //level=JOptionPane.showOptionDialog(null,"select level",null,1,1,null,lev,2);
                p=JOptionPane.showInputDialog("Enter Player's Name","player");
                int eb=JOptionPane.showOptionDialog(null,"select symbol",p,1,1,null,eboard.getAll(),0);
                if(eb==0){

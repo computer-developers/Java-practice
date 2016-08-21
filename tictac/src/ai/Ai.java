@@ -3,18 +3,29 @@ import game.*;
 import player.*;
 import java.util.*;
 public class Ai extends Player{
+     public static int L_Easy=1,L_Mid=2,L_High=3;
+     private int level=3;
      Random r=new Random();
      Status s=new Status();
      public Ai(GameData board,eboard e) throws InvalidSymbolException{
-          super("Artificial Intelligence",board,e);
+          this("Artificial Intelligence",board,e);
      }
      public Ai(String name,GameData board,eboard e) throws InvalidSymbolException{
-          super(name,board,e);
+          this(name,board,e,L_High);
      }
      public Ai(eboard e) throws InvalidSymbolException{
-          super("Artificial Intelligence",new GameData(),e);
+          this("Artificial Intelligence",new GameData(),e);
      }
-     
+     public Ai(String name,GameData board,eboard e,int level) throws InvalidSymbolException{
+          super(name,board,e);
+          this.level=level;
+     }
+     public Ai(GameData board,eboard e,int level) throws InvalidSymbolException{
+          this("Artificial Intelligence",board,e,level);
+     }
+     public Ai(eboard e,int level) throws InvalidSymbolException{
+          this("Artificial Intelligence",new GameData(),e,level);
+     }
      public int move(){
           ArrayList arr;
           arr=s.getavail();
@@ -40,7 +51,7 @@ public class Ai extends Player{
                               return k;
                     }}
           }
-          L2:{
+          L2:if(level/2>=1){
                Analysis an=new Analysis();
                ArrayList ar;
                ar=an.mindiff(s,board,super.e);
@@ -49,12 +60,12 @@ public class Ai extends Player{
           if(arr.size()==1)
                if(move((int)arr.get(0)))
                     return (int)arr.get(0);
-          L3:{
+          L3:if(level/3>=1){
                Analysis an=new Analysis();
                ArrayList ar=an.nextStep(s,super.e);
                arr.retainAll(ar);
           }
-          L4:{
+          L4:if(level/3>=1){
                Analysis an=new Analysis();
                ArrayList ar=an.checkone(arr, s, e);
                arr.retainAll(ar);
