@@ -6,7 +6,6 @@ public class Merge{
 	}
 	static void proc(int a){
 		try{
-
 			ArrayList<Integer> arr=new ArrayList<>(a);
 			for(int i=0;i<a;i++)
 				arr.add(sc.nextInt());
@@ -16,6 +15,6 @@ public class Merge{
 			t.join();
 			for(int i=0;i<arr.size();i++)
 				System.out.println(arr.get(i));
-		}catch(InterruptedException ex){}
+		}catch(InterruptedException ex){System.out.println("cscccscssc");}
 	}
 }
