@@ -21,6 +21,11 @@ public class Ai extends Player{
           if(arr.size()==1)
                if(move((int)arr.get(0)))
                     return (int)arr.get(0);
+          if(arr.size()==9){
+               int i=(int)arr.get(r.nextInt(8));
+               if(move(i))
+                    return i;
+          }
           L1:{
                for(int i=0;i<arr.size();i++){
                     int k=(int)arr.get(i);
