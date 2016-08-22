@@ -1,20 +1,51 @@
 import java.util.*;
+import java.io.*;
 public class Merge{
-	static Scanner sc=new Scanner(System.in);
+	static Scanner sc;
 	public static void main(String arg[]){
-		proc(20);
+		prof("input.txt","outputM.txt");
+		sc=new Scanner(System.in);
+		procm();
+		prof("input.txt","outputI.txt");
+		sc=new Scanner(System.in);
+		proci();
 	}
-	static void proc(int a){
+	static void procm(){
 		try{
-			ArrayList<Integer> arr=new ArrayList<>(a);
-			for(int i=0;i<a;i++)
-				arr.add(sc.nextInt());
+			ArrayList<Integer> arr=new ArrayList<>();
+			try{
+				for(;true;)
+					arr.add(sc.nextInt());
+			}catch(NoSuchElementException ex){}
 			MSort m=new MSort(arr);
 			Thread t=new Thread(m);
+			long st=System.nanoTime();
 			t.run();
-			t.join();
+			System.out.println("Time in nano second: "+(System.nanoTime()-st));
 			for(int i=0;i<arr.size();i++)
 				System.out.println(arr.get(i));
-		}catch(InterruptedException ex){System.out.println("cscccscssc");}
+		}catch(Exception ex){System.out.println(ex);}
+	}
+	static void proci(){
+		try{
+			ArrayList<Integer> arr=new ArrayList<>();
+			try{
+				for(;true;)
+					arr.add(sc.nextInt());
+			}catch(NoSuchElementException ex){}
+			long st=System.nanoTime();
+			arr=MSort.insertS(arr);
+			System.out.println("Time in nano second: "+(System.nanoTime()-st));
+			for(int i=0;i<arr.size();i++)
+				System.out.println(arr.get(i));
+		}catch(Exception ex){System.out.println(ex);}
+	}
+	static void prof(String ins,String outs){
+		try{
+			FileInputStream in = new FileInputStream(ins);
+			PrintStream out = new PrintStream(outs);
+			System.setIn(in);
+			System.setOut(out);
+		}catch(FileNotFoundException ex){System.out.println(ex);}
 	}
 }
