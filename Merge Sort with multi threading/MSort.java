@@ -28,12 +28,12 @@ public class MSort implements Runnable{
 		MSort m1=new MSort(new ArrayList(arr.subList(0,x)));
 		MSort m2=new MSort(new ArrayList(arr.subList(x,arr.size())));
 		Thread t1=new Thread(m1),t2=new Thread(m2);
-		//t1.start();
-		//t2.start();
+		t1.start();
+		t2.start();
 		t1.join();
 		t2.join();
-		t1.run();
-		t2.run();
+		//t1.run();
+		//t2.run();
 		this.arr.clear();
 		int i,j,k,m1s=m1.arr.size(),m2s=m2.arr.size();
 		for(i=j=k=0;j<m1s&&k<m2s;i++){
