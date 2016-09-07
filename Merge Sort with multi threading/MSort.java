@@ -1,5 +1,9 @@
 import java.util.*;
-public class MSort implements Runnable{
+public class MSort extends Thread{
+	static int max=0;
+	final static int pmax=Thread.MAX_PRIORITY;
+	final int pri;
+	ArrayList arr;
 	static ArrayList insertS(List<Integer>arg){
 		LinkedList ls=new LinkedList();
 		for(int a:arg){
@@ -9,11 +13,17 @@ public class MSort implements Runnable{
 		}
 		return new ArrayList(ls);
 	}
-	ArrayList arr;
-	//final int pri;
-	MSort(ArrayList<Integer>arr){
+	MSort(ArrayList<Integer>arr,int pri){
 		this.arr=arr;
-		//this.pri=pri;
+		this.pri=pri;
+		max=arr.size()>max?arr.size():max;
+	}
+	MSort(ArrayList<Integer>arr){
+		this(arr,pmax);
+	}
+	public void start(){
+		this.setPriority(pri);
+		super.start();
 	}
 	public void run(){
 		try{
@@ -25,8 +35,9 @@ public class MSort implements Runnable{
 	}
 	void merge()throws InterruptedException{
 		int x=arr.size()/2;
-		MSort m1=new MSort(new ArrayList(arr.subList(0,x)));
-		MSort m2=new MSort(new ArrayList(arr.subList(x,arr.size())));
+		int pr=(int)(((float)arr.size()/max+0.1)*pmax);
+		MSort m1=new MSort(new ArrayList(arr.subList(0,x)),pr);
+		MSort m2=new MSort(new ArrayList(arr.subList(x,arr.size())),pr);
 		Thread t1=new Thread(m1),t2=new Thread(m2);
 		t1.start();
 		t2.start();

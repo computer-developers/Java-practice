@@ -6,15 +6,15 @@ public class Merge{
 		prof("input.txt","outputM.txt");
 		sc=new Scanner(System.in);
 		procm();
-		prof("input.txt","outputI.txt");
-		sc=new Scanner(System.in);
-		proci();
 		prof("input.txt","outputS.txt");
 		sc=new Scanner(System.in);
 		procs();
-		prof("input.txt","outputPS.txt");
+/*		prof("input.txt","outputPS.txt");
 		sc=new Scanner(System.in);
-		procps();
+		procps();*/
+		prof("input.txt","outputI.txt");
+		sc=new Scanner(System.in);
+		proci();
 	}
 	static void procm(){
 		try{
@@ -24,9 +24,9 @@ public class Merge{
 					arr.add(sc.nextInt());
 			}catch(NoSuchElementException ex){}
 			MSort m=new MSort(arr);
-			Thread t=new Thread(m);
+//			Thread t=new Thread(m);
 			long st=System.nanoTime();
-			t.run();
+			m.run();
 			System.out.println("Time in nano second: "+(System.nanoTime()-st));
 			for(int i=0;i<arr.size();i++)
 				System.out.println(arr.get(i));
