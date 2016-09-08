@@ -1,7 +1,6 @@
 import java.util.*;
 public class MSort extends Thread{
-	static int max=0;
-	final static int pmax=Thread.MAX_PRIORITY;
+	final static int pmax=Thread.MIN_PRIORITY;
 	final int pri;
 	ArrayList arr;
 	static ArrayList insertS(List<Integer>arg){
@@ -16,10 +15,9 @@ public class MSort extends Thread{
 	MSort(ArrayList<Integer>arr,int pri){
 		this.arr=arr;
 		this.pri=pri;
-		max=arr.size()>max?arr.size():max;
 	}
 	MSort(ArrayList<Integer>arr){
-		this(arr,pmax);
+		this(arr,MAX_PRIORITY);
 	}
 	public void start(){
 		this.setPriority(pri);
@@ -35,7 +33,7 @@ public class MSort extends Thread{
 	}
 	void merge()throws InterruptedException{
 		int x=arr.size()/2;
-		int pr=(int)(((float)arr.size()/max+0.1)*pmax);
+		int pr=pri>MIN_PRIORITY?pri-1:pri;
 		MSort m1=new MSort(new ArrayList(arr.subList(0,x)),pr);
 		MSort m2=new MSort(new ArrayList(arr.subList(x,arr.size())),pr);
 		Thread t1=new Thread(m1),t2=new Thread(m2);
