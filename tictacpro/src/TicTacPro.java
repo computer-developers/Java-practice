@@ -1,5 +1,6 @@
-public class TicTacPro {
+import test.IOManagerTest;
+public class TicTacPro{
      public static void main(String[] args) {
-          // TODO code application logic here
+          new IOManagerTest().test();
      }    
 }
