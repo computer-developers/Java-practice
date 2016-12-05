@@ -6,6 +6,18 @@ public class SimplePlayer implements IntPlayer{
      private String name;
      private GameData board;
      private eboard sym;
+     private SimplePlayer(String name){
+          this.name=name;
+     }
+     public static IntPlayer getSP(String name){
+          return new SimplePlayer(name);
+     }
+     public static IntPlayer getSP(String name,GameData g,eboard e){
+          SimplePlayer s=new SimplePlayer(name);
+          s.board=g;
+          s.sym=e;
+          return s;
+     }
      @Override
      public String getName() {
           return name;
@@ -22,20 +34,18 @@ public class SimplePlayer implements IntPlayer{
      }
 
      @Override
-     public void setSym(eboard e){
-          this.sym=e;
+     public IntPlayer setSym(eboard e){
+          return getSP(this.name,this.board,e);
      }
 
      @Override
-     public boolean setName(String name) {
-          this.name=name;
-          return true;
+     public IntPlayer setBoard(GameData e){
+          return getSP(this.name,e,this.sym);
      }
 
      @Override
-     public boolean setBoard(GameData g) {
-          this.board=g;
-          return true;
+     public IntPlayer setName(String e){
+          return getSP(e,this.board,this.sym);
      }
      
 }

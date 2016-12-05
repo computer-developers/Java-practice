@@ -14,10 +14,11 @@ public class IOManager implements IntInPipe {
      public IOManager(String name){
           this.name=name;
      }
+     public IOManager(){}
      public void createInPipe(int x){
           in=newInPipe(x);
-          if(in==null)
-               System.out.println("zfqio");
+//          if(in==null)
+//               System.out.println("zfqio");
      }
      public void setOutPipe(IntInPipe pi){
           out=newOutPipe(pi.getPipedInputStream());
@@ -30,8 +31,9 @@ public class IOManager implements IntInPipe {
           synchronized(in){
                s=in.getMessage();
           }
-          System.out.println("io getmsg "+s);
-          cn.accept(s.split(" ",2)[1].trim());
+          //System.out.println("io getmsg "+s);
+          cn.accept(s.split(" ",2)[1]);
+          //cn.accept(s);
      }
      public Object getObject(String msg){
           synchronized(in){
@@ -73,8 +75,8 @@ public class IOManager implements IntInPipe {
      }
      @Override
      public PipedInputStream getPipedInputStream() {
-          if(in==null)
-               System.out.println("jnfhkjh");
+//          if(in==null)
+//               System.out.println("jnfhkjh");
           return in.getPipe();
      }
 }

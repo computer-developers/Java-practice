@@ -4,7 +4,7 @@ public interface IntPlayer {
      String getName();
      eboard getSym();
      GameData getBoard();
-     void setSym(eboard e)throws InvalidSymbolException;
-     boolean setName(String name);
-     boolean setBoard(GameData g);
+     IntPlayer setSym(eboard e)throws InvalidSymbolException;
+     IntPlayer setName(String name);
+     IntPlayer setBoard(GameData g);
 }

@@ -39,7 +39,7 @@ public class InPipe {
      PipedInputStream getPipe(){
           if(in!=null)
                return in;
-          throw new NullPointerException("sfsfsf");
+          return null;
      }
 }
 
