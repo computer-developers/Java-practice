@@ -15,7 +15,7 @@ public enum eboard{
           return this;
      }
      public static eboard[] getAll(){
-          eboard[] e={_O,_X};
+          eboard[] e={_O,_X,_T,_S};
           return e;
      }
 }

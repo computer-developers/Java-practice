@@ -10,7 +10,7 @@ public class IOManager implements IntInPipe {
      private InPipe in;
      private OutPipe out;
      private volatile boolean f=false;
-     private Consumer<String> cn;
+     protected Consumer<String> cn;
      public IOManager(String name){
           this.name=name;
      }

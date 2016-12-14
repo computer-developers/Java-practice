@@ -3,76 +3,62 @@ import lib.myio.*;
 import lib.modules.player.*;
 import lib.modules.gameboard.*;
 import static lib.modules.gameboard.eboard.*;
-public class IOMap {
-     private int l;
-     private IntPlayer pl[];
-     private IOManager io[];
-     public IOMap(int x){
-          if(x<2)
-               return;
-          l=x;
-          io=new IOManager[x];
-          pl=new IntPlayer[x];
+public class IOMap extends IOManager implements IntPlayer{
+//     private int l;
+     private IntPlayer pl;
+     public IOMap(){}
+     public IOMap(String name){
+          super(name);
      }
-     public synchronized boolean add(IOManager i,IntPlayer p){
-          if(p.getSym()==_N)return false;
-          r:{
-               for(int j=0;j<l;j++){
-                    try{
-                         if(pl[j].getSym()==p.getSym())
-                              return false;
-                    }catch(NullPointerException ex){}
-               }
-          }
-          for(int j=0;j<l;j++){
-               if(pl[j]==null){
-                    pl[j]=p;
-                    io[j]=i;
-                    return true;
-               }
-          }
-          return false;
+     public synchronized void addPlayer(IntPlayer p){
+//          if(p.getSym()==_N)return false;
+          pl=p;
      }
-     public synchronized boolean remove(IntPlayer p){
-          for(int j=0;j<l;j++){
-               try{
-                    if(pl[j].equals(p)){
-                         pl[j]=null;
-                         io[j]=null;
-                         return true;
-                    }
-               }catch(NullPointerException ex){}
-          }
-          return false;
+     public synchronized void remove(){
+          pl=null;
      }
-     public IOManager getIO(IntPlayer p){
-          for(int j=0;j<l;j++){
-               try{
-                    if(pl[j].getSym()==p.getSym())
-                         return io[j];
-               }catch(NullPointerException ex){}
-          }
-          return null;
+     public IntPlayer getPlayer(){
+          return pl;
      }
-     public IntPlayer getPlayer(IOManager i){
-          for(int j=0;j<l;j++){
-               try{
-                    if(io[j]==i)
-                         return pl[j];
-               }catch(NullPointerException ex){}
-          }
-          return null;
+     
+     @Override
+     public String getName() {
+          if(pl==null)
+               return null;
+          return pl.getName();
      }
-     public IOManager getIO(eboard e){
-          for(int j=0;j<l;j++){
-               try{
-                    if(pl[j].getSym()==e)
-                         return io[j];
-               }catch(NullPointerException ex){}
-          }
-          return null;
+
+     @Override
+     public eboard getSym() {
+          if(pl==null)
+               return null;
+          return pl.getSym();
      }
-     public IntPlayer[] getAllPlayer(){
-          return pl.clone();
+
+     @Override
+     public GameData getBoard() {
+          if(pl==null)
+               return null;
+          return pl.getBoard();
      }
-}
+
+     @Override
+     public IntPlayer setSym(eboard e) throws InvalidSymbolException {
+          if(pl==null)
+               return null;
+          return pl=pl.setSym(e);
+     }
+
+     @Override
+     public IntPlayer setName(String name) {
+     if(pl==null)
+               return null;
+          return pl=pl.setName(name);
+     }
+
+     @Override
+     public IntPlayer setBoard(GameData g) {
+     if(pl==null)
+               return null;
+          return pl=pl.setBoard(g);}
+     }
