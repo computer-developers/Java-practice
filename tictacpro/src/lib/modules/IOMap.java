@@ -17,9 +17,6 @@ public class IOMap extends IOManager implements IntPlayer{
      public synchronized void remove(){
           pl=null;
      }
-     public IntPlayer getPlayer(){
-          return pl;
-     }
      
      @Override
      public String getName() {

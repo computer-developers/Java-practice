@@ -1,5 +1,6 @@
 package client.cliplayer;
 import java.io.*;
+import java.util.*;
 import lib.modules.gameboard.*;
 import lib.modules.player.*;
 import lib.myio.*;
@@ -9,6 +10,7 @@ public class CLIPlayer implements IntInPipe{
      private IOManager io;
      private String name="Default Name";
      private eboard sym;
+     private Scanner sc=new Scanner(System.in);
      private PrintStream out=System.out;
      @Override
      public PipedInputStream getPipedInputStream() {
@@ -34,8 +36,20 @@ public class CLIPlayer implements IntInPipe{
                     out.println(arr[1]);
                     break;
                case Board_Status:
-                    if(arr[1].split("@",3)[0]==BS_Win){
+                    if(arr[1].split(SC,3)[0].equals(BS_Win)){
                          out.println("win :- "+arr[1]);
+                         return;
+                    }
+                    break;
+               case Board_Error:
+                    if(arr[1].split(SC,3)[0].equals(BE_Sym)){
+                         System.out.println(" sgsgggsgshhhsh");
+                         synchronized(Scanner.class){
+                              out.println("Error :- "+arr[1]);
+                              IntPlayer p=SimplePlayer.getSP(name,null,eboard.valueOf(sc.next()));
+                              sym=p.getSym();
+                              io.putMessage(Details+" "+makeDetail(p));
+                         }
                          return;
                     }
                     break;
