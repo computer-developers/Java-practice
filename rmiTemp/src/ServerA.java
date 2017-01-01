@@ -1,10 +1,9 @@
-package server;
+
 import java.rmi.server.*;
 import java.rmi.*;
-import rmitemp.*;
-public class SerAdder extends UnicastRemoteObject implements IntAdder{
+public class ServerA extends UnicastRemoteObject implements IntAdder{
 
-     public SerAdder()throws RemoteException{}
+     public ServerA()throws RemoteException{}
      
      @Override
      public int add(int x, int y) throws RemoteException{
