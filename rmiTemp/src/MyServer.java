@@ -17,7 +17,7 @@ public class MyServer {
      public static void startSer(){
           try{
                IntAdder adder = new ServerA();
-               Naming.rebind("rmi://localhost:8686/my", adder);
+               Naming.rebind(uri, adder);
           }catch(Exception e){
                e.printStackTrace();
                
