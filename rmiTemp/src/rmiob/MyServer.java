@@ -1,6 +1,5 @@
 package rmiob;
 
-import java.io.*;
 import java.rmi.*;
 import java.rmi.registry.*;
 import java.util.*;
@@ -9,7 +8,9 @@ public class MyServer {
      static String uri;
      static Scanner sc=new Scanner(System.in);
      public static void main(String... arg) throws Exception{
-          uri="rmi://localhost:"+(arg.length==0?"8686":arg[0])+"/my";
+          int port=arg.length==0?8686:Integer.parseInt(arg[0]);
+          Registry r=LocateRegistry.createRegistry(port);
+          uri="rmi://localhost:"+port+"/my";
           System.out.println("enter 0 to stop server");
           //Process p=Runtime.getRuntime().exec("rmiregistry 8686");
           new Thread(MyServer::startSer).start();
